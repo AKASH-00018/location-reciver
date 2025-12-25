@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>📍 Location Received</h2>
+<p id="data">Waiting…</p>
+
+<script>
+const p = new URLSearchParams(window.location.search);
+const lat = p.get("lat");
+const lon = p.get("lon");
+const acc = p.get("acc");
+
+if (lat && lon) {
+  document.getElementById("data").innerHTML = `
+    Latitude: ${lat}<br>
+    Longitude: ${lon}<br>
+    Accuracy: ${acc} meters<br><br>
+    <a href="https://maps.google.com/?q=${lat},${lon}" target="_blank">
+      🌍 View on Google Maps
+    </a>
+  `;
+} else {
+  document.getElementById("data").innerText =
+    "❌ No location data received";
+}
+</script>
+
+</body>
+</html>
